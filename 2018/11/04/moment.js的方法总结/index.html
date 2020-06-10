@@ -6,20 +6,23 @@
     
 
     
-    <title>about | 李伟朋@博客</title>
+    <title>moment.js的方法总结 | 李伟朋@博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="个人介绍1. 基本信息   姓名 电话 毕业院校 学历 邮箱 工作经验    李伟朋 15769294114 西安电子科技大学 大专 liweipeng_it@163.com 3年以上   2. 求职意向工作地点：西安         期望职位：Web前端工程师 3. 自我评价技术方面 1.掌握HTML、CSS、JavaScript、AJAX，jQuery 的Web基础开发。 2.熟练使用Drea">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://liweipeng88.github.io/about/index.html">
+    <meta name="keywords" content="常用插件" />
+    
+    <meta name="description" content="总结一个非常实用的日期工具类moment.js，日期获取，格式化等。 都是以前工作中遇到的，我会在使用工具类的时候新建一个js，工作中遇到要显示什么都在这个文件里尝试，所以这个顺序是我工作中遇到然后在js文件中尝试的顺序，可能顺序稍微乱一些，但是大致没有什么问题。 引入moment12345&#x2F;&#x2F;require 方式var moment&#x3D;require(&#39;moment&#39;);&#x2F;&#x2F;import 方式im">
+<meta property="og:type" content="article">
+<meta property="og:title" content="moment.js的方法总结">
+<meta property="og:url" content="https://liweipeng88.github.io/2018/11/04/moment.js%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="李伟朋@博客">
-<meta property="og:description" content="个人介绍1. 基本信息   姓名 电话 毕业院校 学历 邮箱 工作经验    李伟朋 15769294114 西安电子科技大学 大专 liweipeng_it@163.com 3年以上   2. 求职意向工作地点：西安         期望职位：Web前端工程师 3. 自我评价技术方面 1.掌握HTML、CSS、JavaScript、AJAX，jQuery 的Web基础开发。 2.熟练使用Drea">
+<meta property="og:description" content="总结一个非常实用的日期工具类moment.js，日期获取，格式化等。 都是以前工作中遇到的，我会在使用工具类的时候新建一个js，工作中遇到要显示什么都在这个文件里尝试，所以这个顺序是我工作中遇到然后在js文件中尝试的顺序，可能顺序稍微乱一些，但是大致没有什么问题。 引入moment12345&#x2F;&#x2F;require 方式var moment&#x3D;require(&#39;moment&#39;);&#x2F;&#x2F;import 方式im">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-09T09:21:22.000Z">
-<meta property="article:modified_time" content="2020-06-10T01:12:50.045Z">
+<meta property="article:published_time" content="2018-11-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-06-10T02:32:18.822Z">
 <meta property="article:author" content="liweipeng">
+<meta property="article:tag" content="常用插件">
 <meta name="twitter:card" content="summary">
     
 
@@ -150,24 +153,48 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/about/index.html">about</em>
+    <a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/">插件</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-moment.js的方法总结" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        about
+        moment.js的方法总结
         </h1>
     
 
             </header>
         
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2018/11/04/moment.js%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" class="article-date">
+         <time datetime="2018-11-03T16:00:00.000Z" itemprop="datePublished">2018-11-04</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" rel="tag">常用插件</a>
+    </div>
+
+                
+
+                
+
+            </div>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -177,69 +204,51 @@
 
             
 
-            <h2 id="个人介绍"><a href="#个人介绍" class="headerlink" title="个人介绍"></a>个人介绍</h2><h3 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h3><table>
-<thead>
-<tr>
-<th align="center">姓名</th>
-<th align="center">电话</th>
-<th align="center">毕业院校</th>
-<th align="center">学历</th>
-<th align="center">邮箱</th>
-<th align="center">工作经验</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">李伟朋</td>
-<td align="center">15769294114</td>
-<td align="center">西安电子科技大学</td>
-<td align="center">大专</td>
-<td align="center"><a href="mailto:liweipeng_it@163.com">liweipeng_it@163.com</a></td>
-<td align="center">3年以上</td>
-</tr>
-</tbody></table>
-<h3 id="2-求职意向"><a href="#2-求职意向" class="headerlink" title="2. 求职意向"></a>2. 求职意向</h3><p>工作地点：西安         期望职位：Web前端工程师</p>
-<h3 id="3-自我评价"><a href="#3-自我评价" class="headerlink" title="3. 自我评价"></a>3. 自我评价</h3><p><strong>技术方面</strong></p>
-<p>1.掌握HTML、CSS、JavaScript、AJAX，jQuery 的Web基础开发。</p>
-<p>2.熟练使用Dreamweaver, Visual Studio Code,Sublime Text等工具开发前端页面</p>
-<p>3.熟练使用Photoshop，sketch等切图工具进行进行切图。</p>
-<p>4.前端框架了解Bootstrap、AngularJS、jQuery以及zepto.js。</p>
-<p>5.了解HTML5和CSS3技术,可以实现基本动画效果。</p>
-<p>6.版本管理工具使用过Git（命令行操作以及SourceTree操作）,SVN。</p>
-<p>7.熟练掌握Web前端开发的流程和模式。</p>
-<p>8.有手机端开发开发经验。</p>
-<p><strong>业务方面</strong></p>
-<p>1.互联网营销或广告系统开发经验</p>
-<p>2.汽车电商网络开发相关经验</p>
-<p>3.基于OpenStack私有云管理平台开发经验</p>
-<h3 id="4-项目经验"><a href="#4-项目经验" class="headerlink" title="4. 项目经验"></a>4. 项目经验</h3><p><strong>项目名称：</strong> <strong>博客园1</strong></p>
-<p>项目简介：博客园创立于2004年1月，是一个面向开发者的知识分享社区。自创建以来，博客园一直致力并专注于为开发者打造一个纯净的技术交流社区，推动并帮助开发者通过互联网分享知识，从而让更多开发者从中受益。博客园的使命是帮助开发者用代码改变世界。</p>
-<p>我的职责：负责系统样式和交互效果实现，和后台一起前后端接口联调。</p>
-<h3 id="5-工作经历"><a href="#5-工作经历" class="headerlink" title="5.工作经历"></a>5.工作经历</h3><p>2015年05月2015年12月 上海B公司</p>
-<p>2013年07月—2015年5月 上海A公司</p>
-<h3 id="6-教育经历"><a href="#6-教育经历" class="headerlink" title="6.教育经历"></a>6.教育经历</h3><table>
-<thead>
-<tr>
-<th align="center">学校名称</th>
-<th align="center">学习时间</th>
-<th align="center">学历</th>
-<th align="center">专业</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">西安电子科技大学</td>
-<td align="center">2020.9至2022.7</td>
-<td align="center">大专</td>
-<td align="center">软件技术</td>
-</tr>
-</tbody></table>
+            <p>总结一个非常实用的日期工具类moment.js，日期获取，格式化等。<br> 都是以前工作中遇到的，我会在使用工具类的时候新建一个js，工作中遇到要显示什么都在这个文件里尝试，所以这个顺序是我工作中遇到然后在js文件中尝试的顺序，可能顺序稍微乱一些，但是大致没有什么问题。</p>
+<h2 id="引入moment"><a href="#引入moment" class="headerlink" title="引入moment"></a>引入moment</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//require 方式</span></span><br><span class="line"><span class="keyword">var</span> moment=<span class="built_in">require</span>(<span class="string">'moment'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//import 方式</span></span><br><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">'moment'</span>;</span><br></pre></td></tr></table></figure>
 
+<h2 id="设定moment区域为中国"><a href="#设定moment区域为中国" class="headerlink" title="设定moment区域为中国"></a>设定moment区域为中国</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//require 方式</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'moment/locale/zh-cn'</span>)</span><br><span class="line">moment.locale(<span class="string">'zh-cn'</span>); </span><br><span class="line"><span class="comment">//import 方式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'moment/locale/zh-cn'</span></span><br><span class="line">moment.locale(<span class="string">'zh-cn'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化时间类型"><a href="#格式化时间类型" class="headerlink" title="格式化时间类型"></a>格式化时间类型</h2><p>1.取当天时间，以YYYY年MM月DD日形式显示</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now=moment().format(<span class="string">"YYYY年MM月DD日"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.任意时间戳格式化，以YYYY-MM-DD HH:mm:ss形式显示</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t1=moment(<span class="number">1411641720000</span>).format(<span class="string">'YYYY-MM-DD HH:mm:ss'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取前一天日期，格式以YYYY-MM-DD形式显示"><a href="#获取前一天日期，格式以YYYY-MM-DD形式显示" class="headerlink" title="获取前一天日期，格式以YYYY-MM-DD形式显示"></a>获取前一天日期，格式以YYYY-MM-DD形式显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t11=moment().day(<span class="number">0</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取本周五日期，格式以YYYY-MM-DD形式显示"><a href="#获取本周五日期，格式以YYYY-MM-DD形式显示" class="headerlink" title="获取本周五日期，格式以YYYY-MM-DD形式显示"></a>获取本周五日期，格式以YYYY-MM-DD形式显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t12=moment().weekday(<span class="number">5</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取上周五日期，格式以YYYY-MM-DD形式显示"><a href="#获取上周五日期，格式以YYYY-MM-DD形式显示" class="headerlink" title="获取上周五日期，格式以YYYY-MM-DD形式显示"></a>获取上周五日期，格式以YYYY-MM-DD形式显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t13=moment().weekday(<span class="number">-3</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可以简单理解为上周倒数第几天，上周倒数第三天就是上周五了，和当天日期无关</p>
+<h2 id="获取当前年份、月份、日期"><a href="#获取当前年份、月份、日期" class="headerlink" title="获取当前年份、月份、日期"></a>获取当前年份、月份、日期</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t14=moment().year()</span><br><span class="line"><span class="keyword">var</span> t15=moment().month()<span class="comment">//此处月份从0开始，当前月要+1</span></span><br><span class="line"><span class="keyword">var</span> t16=moment().date();</span><br></pre></td></tr></table></figure>
+
+<p>注意这个地方，日期不是.day()/days()</p>
+<p>结合t14，t15，t16就可以输出你想要的任何和当前日期、月份相关的日期<br> 例如：我想获取去年今天的完整日期，如：今天是2018-7-23，我要输出的是2017-7-23</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;t14<span class="number">-1</span>&#125;</span>-<span class="subst">$&#123;t15+<span class="number">1</span>&#125;</span>-<span class="subst">$&#123;t16&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当然这不是获取去年今天日期最好的办法，但你可以拼出很多你想要的组合，下面会介绍更好的获取去年今日的方法。</p>
+<h2 id="获取上个月今天的日期，格式以YYYY-MM-DD显示"><a href="#获取上个月今天的日期，格式以YYYY-MM-DD显示" class="headerlink" title="获取上个月今天的日期，格式以YYYY-MM-DD显示"></a>获取上个月今天的日期，格式以YYYY-MM-DD显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t18=moment().subtract(<span class="number">1</span>, <span class="string">'months'</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取上个月日期，格式以YYYY-MM显示"><a href="#获取上个月日期，格式以YYYY-MM显示" class="headerlink" title="获取上个月日期，格式以YYYY-MM显示"></a>获取上个月日期，格式以YYYY-MM显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t19=moment().subtract(<span class="number">1</span>, <span class="string">'months'</span>).format(<span class="string">'YYYY-MM'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取前一天日期，格式以YYYY-MM-DD显示"><a href="#获取前一天日期，格式以YYYY-MM-DD显示" class="headerlink" title="获取前一天日期，格式以YYYY-MM-DD显示"></a>获取前一天日期，格式以YYYY-MM-DD显示</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t20 = moment().subtract(<span class="number">1</span>, <span class="string">'days'</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取去年今天的日期，格式以YYYY-MM-DD显示，即简便的获取去年今天日期的方法"><a href="#获取去年今天的日期，格式以YYYY-MM-DD显示，即简便的获取去年今天日期的方法" class="headerlink" title="获取去年今天的日期，格式以YYYY-MM-DD显示，即简便的获取去年今天日期的方法"></a>获取去年今天的日期，格式以YYYY-MM-DD显示，即简便的获取去年今天日期的方法</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t21= moment().subtract(<span class="number">1</span>, <span class="string">'year'</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取两个小时之后的时间"><a href="#获取两个小时之后的时间" class="headerlink" title="获取两个小时之后的时间"></a>获取两个小时之后的时间</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t22=moment().<span class="keyword">add</span>(<span class="number">2</span>,<span class="string">'hours'</span>).format(<span class="string">'YYYY-MM-DD HH:mm:ss'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这个的应用是获取时间戳过期时间<br> 比较也很简单，只要获取当前时间，一样的format用&gt;&lt;=号比较就可以了</p>
+<h2 id="获取五天前的日期"><a href="#获取五天前的日期" class="headerlink" title="获取五天前的日期"></a>获取五天前的日期</h2><p>例如:今天2018-7-23，获取到的时间是2018-7-18</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t23=moment().subtract(<span class="number">5</span>, <span class="string">'days'</span>).format(<span class="string">'YYYY-MM-DD'</span>);</span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://liweipeng88.github.io/about/index.html" data-id="ckb8qoprv0001bgut2rrzev3x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://liweipeng88.github.io/2018/11/04/moment.js%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/" data-id="ckb8qoprp0000bgutasz200dw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -309,39 +318,17 @@
             "@type": "Person",
             "name": "liweipeng"
         },
-        "headline": "about",
+        "headline": "moment.js的方法总结",
         "image": "https://liweipeng88.github.io",
-        
-        
-        "datePublished": "2020-06-09",
-        "dateCreated": "2020-06-09",
+        "keywords": "常用插件",
+        "genre": "web前端 插件",
+        "datePublished": "2018-11-04",
+        "dateCreated": "2018-11-04",
         "dateModified": "2020-06-10",
-        "url": "https://liweipeng88.github.io/about/index.html",
-        "description": "个人介绍1. 基本信息
-
-
-姓名
-电话
-毕业院校
-学历
-邮箱
-工作经验
-
-
-
-李伟朋
-15769294114
-西安电子科技大学
-大专
-liweipeng_it@163.com
-3年以上
-
-
-2. 求职意向工作地点：西安         期望职位：Web前端工程师
-3. 自我评价技术方面
-1.掌握HTML、CSS、JavaScript、AJAX，jQuery 的Web基础开发。
-2.熟练使用Drea",
-        "wordCount": 75
+        "url": "https://liweipeng88.github.io/2018/11/04/moment.js的方法总结/",
+        "description": "总结一个非常实用的日期工具类moment.js，日期获取，格式化等。 都是以前工作中遇到的，我会在使用工具类的时候新建一个js，工作中遇到要显示什么都在这个文件里尝试，所以这个顺序是我工作中遇到然后在js文件中尝试的顺序，可能顺序稍微乱一些，但是大致没有什么问题。
+引入moment12345//require 方式var moment=require('moment');//import 方式im",
+        "wordCount": 269
     }
 </script>
 
@@ -418,6 +405,29 @@ liweipeng_it@163.com
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2019/12/04/nui-app%E9%87%8C%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            请求接口的简单封装
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/0201/09/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fes7%E8%BD%ACes5%E7%9A%84runtime.js%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">runtime.js</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -593,7 +603,7 @@ liweipeng_it@163.com
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://liweipeng88.github.io/about/index.html';
+    var disqus_url = 'https://liweipeng88.github.io/2018/11/04/moment.js%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/';
     
     (function() {
     var dsq = document.createElement('script');

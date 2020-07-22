@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>MongoDB用户相关操作 | 李伟朋@博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="数据库" />
+    
+    <meta name="description" content="用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https:&#x2F;&#x2F;docs.mongodb.com&#x2F;v3.6&#x2F;reference&#x2F;built-in-roles&#x2F;index.html 创建一个超级用户角色： 12345678use admin;db.createUser(  &amp;#123;    user: &quot;admin&quot;,    p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB用户相关操作">
+<meta property="og:url" content="https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="李伟朋@博客">
+<meta property="og:description" content="用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https:&#x2F;&#x2F;docs.mongodb.com&#x2F;v3.6&#x2F;reference&#x2F;built-in-roles&#x2F;index.html 创建一个超级用户角色： 12345678use admin;db.createUser(  &amp;#123;    user: &quot;admin&quot;,    p">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/07/22/UTX46U.jpg">
+<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-22T01:49:38.953Z">
+<meta property="article:author" content="liweipeng">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/22/UTX46U.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="李伟朋@博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Today&#39;s pay, tomorrow&#39;s harvest</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-MongoDB 数据库常用操作命令（三）" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        MongoDB用户相关操作
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" class="article-date">
+         <time datetime="2020-02-13T16:00:00.000Z" itemprop="datePublished">2020-02-14</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h2 id="用户相关操作"><a href="#用户相关操作" class="headerlink" title="用户相关操作"></a>用户相关操作</h2><p>如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：<a href="https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html" target="_blank" rel="noopener">https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html</a></p>
+<p>创建一个超级用户角色：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;pwd123&quot;,</span><br><span class="line">    roles: [ &quot;root&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>root角色为所有资源提供完全权限，相当于MySQL里的 root 账户。</p>
+<p>在 testdb 数据库中创建一个 testuser 账户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use testdb;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;testuser&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &#123; role: &quot;dbOwner&quot;, db: &quot;testdb&quot; &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><code>dbOwner</code>代表数据库所有者，可以对数据库执行任何管理操作，包含<code>readWrite</code>、<code>dbAdmin</code>和<code>userAdmin</code>角色的权限。</p>
+<p>在 admin 库中创建一个具有多个权限的账户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">user admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123; user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &quot;userAdminAnyDatabase&quot;, &quot;dbAdminAnyDatabase&quot;, &quot;readWriteAnyDatabase&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line">show users;            # 显示当前库所有用户</span><br><span class="line">db.getUser(&#39;admin&#39;);   # 查看用户详情</span><br><span class="line">db.dropUser(&quot;admin&quot;);  # 删除用户</span><br><span class="line">db.logout();           # 退出当前登录</span><br><span class="line"></span><br><span class="line"># 修改用户密码</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(&quot;testuser&quot;, &#123;pwd: &quot;123456789&quot;&#125;);</span><br><span class="line">db.changeUserPassword(&quot;testuser&quot;, &quot;123456789&quot;);</span><br><span class="line"></span><br><span class="line"># 修改用户角色</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(</span><br><span class="line">  &quot;&lt;username&gt;&quot;,</span><br><span class="line">  roles : [&#123; role: &quot;&quot;, db: &quot;&quot; &#125;]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>用户相关操作文档：<a href="https://docs.mongodb.com/manual/reference/method/js-user-management/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/reference/method/js-user-management/</a></p>
+<h2 id="连接数据库身份验证"><a href="#连接数据库身份验证" class="headerlink" title="连接数据库身份验证"></a>连接数据库身份验证</h2><p>连接后身份验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000</span><br><span class="line">use admin;</span><br><span class="line">db.auth(&quot;testuser&quot;, &quot;123456&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>连接时身份验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 27017 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br></pre></td></tr></table></figure>
+
+<p>连接时身份验证，并进入指定库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br><span class="line">mongo --port 20000 -u &quot;testuser&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot; testdb</span><br></pre></td></tr></table></figure>
+
+<p>代码、客户端连接方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongodb:&#x2F;&#x2F;testuser:123456789@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;testdb</span><br><span class="line">mongodb:&#x2F;&#x2F;root:pwd123@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;admin</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" data-id="ckcwps33k0005jwutbm4w8llj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "liweipeng"
+        },
+        "headline": "MongoDB用户相关操作",
+        "image": "https://liweipeng88.github.iohttps://s1.ax1x.com/2020/07/22/UTX46U.jpg",
+        "keywords": "数据库",
+        "genre": "后端 MongoDB",
+        "datePublished": "2020-02-14",
+        "dateCreated": "2020-02-14",
+        "dateModified": "2020-07-22",
+        "url": "https://liweipeng88.github.io/2020/02/14/MongoDB 数据库常用操作命令（三）/",
+        "description": "用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html
+创建一个超级用户角色：
+12345678use admin;db.createUser(  &#123;    user: &quot;admin&quot;,    p",
+        "wordCount": 294
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/02/15/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%9B%9B%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            MongoDB 数据库优化操作
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/02/13/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">MongoDB 增删改查 集合数据</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/05/16/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/06/11/t7bcwV.jpg)" alt="浅谈前端八大UI库" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a></p>
+                            <p class="item-title"><a href="/2020/05/16/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/" class="title">浅谈前端八大UI库</a></p>
+                            <p class="item-date"><time datetime="2020-05-15T16:00:00.000Z" itemprop="datePublished">2020-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/03/nui-app%E9%87%8C%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/06/10/tTQu01.png)" alt="请求接口的简单封装" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a></p>
+                            <p class="item-title"><a href="/2020/03/03/nui-app%E9%87%8C%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82%E6%8E%A5%E5%8F%A3%E7%AE%80%E5%8D%95%E7%9A%84%E5%B0%81%E8%A3%85/" class="title">请求接口的简单封装</a></p>
+                            <p class="item-date"><time datetime="2020-03-02T16:00:00.000Z" itemprop="datePublished">2020-03-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/15/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%9B%9B%EF%BC%89/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/UTX46U.jpg)" alt="MongoDB 数据库优化操作" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></p>
+                            <p class="item-title"><a href="/2020/02/15/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%9B%9B%EF%BC%89/" class="title">MongoDB 数据库优化操作</a></p>
+                            <p class="item-date"><time datetime="2020-02-14T16:00:00.000Z" itemprop="datePublished">2020-02-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/UTX46U.jpg)" alt="MongoDB用户相关操作" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></p>
+                            <p class="item-title"><a href="/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" class="title">MongoDB用户相关操作</a></p>
+                            <p class="item-date"><time datetime="2020-02-13T16:00:00.000Z" itemprop="datePublished">2020-02-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/02/13/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/UTX46U.jpg)" alt="MongoDB 增删改查 集合数据" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></p>
+                            <p class="item-title"><a href="/2020/02/13/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/" class="title">MongoDB 增删改查 集合数据</a></p>
+                            <p class="item-date"><time datetime="2020-02-12T16:00:00.000Z" itemprop="datePublished">2020-02-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a><span class="category-list-count">4</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI%E5%BA%93/" rel="tag">UI库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" rel="tag">常用插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/UI%E5%BA%93/" style="font-size: 13.33px;">UI库</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 16.67px;">vue</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" style="font-size: 10px;">常用插件</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/LiWeipeng88" target="_blank" rel="noopener">github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 liweipeng</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

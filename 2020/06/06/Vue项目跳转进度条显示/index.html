@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Vue项目跳转请求数据窗口上方的进度条显示 | 李伟朋@博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="vue" />
+    
+    <meta name="description" content="1.安装： 1cnpm install --save nprogress  2.在main.js中引入： 121 import NProgress from &#39;nprogress&#39;2 import &#39;nprogress&#x2F;nprogress.css&#39;  3.在main.js中进行配置： 12345671 NProgress.configure(&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue项目跳转请求数据窗口上方的进度条显示">
+<meta property="og:url" content="https://liweipeng88.github.io/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/index.html">
+<meta property="og:site_name" content="李伟朋@博客">
+<meta property="og:description" content="1.安装： 1cnpm install --save nprogress  2.在main.js中引入： 121 import NProgress from &#39;nprogress&#39;2 import &#39;nprogress&#x2F;nprogress.css&#39;  3.在main.js中进行配置： 12345671 NProgress.configure(&amp;#123;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2020/07/22/U7Zgrd.th.jpg">
+<meta property="article:published_time" content="2020-06-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-07-22T02:52:45.922Z">
+<meta property="article:author" content="liweipeng">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/22/U7Zgrd.th.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="李伟朋@博客" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Today&#39;s pay, tomorrow&#39;s harvest</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/nodejs/">nodejs</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/">插件</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%85%B6%E4%BB%96/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/">框架</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Vue项目跳转进度条显示" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Vue项目跳转请求数据窗口上方的进度条显示
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/" class="article-date">
+         <time datetime="2020-06-05T16:00:00.000Z" itemprop="datePublished">2020-06-06</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/vue/" rel="tag">vue</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>1.安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save nprogress</span><br></pre></td></tr></table></figure>
+
+<p>2.在main.js中引入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 import NProgress from &#39;nprogress&#39;</span><br><span class="line">2 import &#39;nprogress&#x2F;nprogress.css&#39;</span><br></pre></td></tr></table></figure>
+
+<p>3.在main.js中进行配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1 NProgress.configure(&#123;     </span><br><span class="line">2     easing: &#39;ease&#39;,  &#x2F;&#x2F; 动画方式    </span><br><span class="line">3     speed: 500,  &#x2F;&#x2F; 递增进度条的速度    </span><br><span class="line">4     showSpinner: false, &#x2F;&#x2F; 是否显示加载ico    </span><br><span class="line">5     trickleSpeed: 200, &#x2F;&#x2F; 自动递增间隔    </span><br><span class="line">6     minimum: 0.3 &#x2F;&#x2F; 初始化时的最小百分比</span><br><span class="line">7 &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>4.在main.js中对路由钩子进行设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;当路由进入前</span><br><span class="line"> router.beforeEach((to, from , next) &#x3D;&gt; &#123;</span><br><span class="line">     &#x2F;&#x2F; 每次切换页面时，调用进度条</span><br><span class="line">    NProgress.start();</span><br><span class="line">    &#x2F;&#x2F; 这个一定要加，没有next()页面不会跳转的。这部分还不清楚的去翻一下官网就明白了</span><br><span class="line">     next();</span><br><span class="line"> &#125;);</span><br><span class="line">&#x2F;&#x2F;当路由进入后：关闭进度条</span><br><span class="line">router.afterEach(() &#x3D;&gt; &#123;  </span><br><span class="line">    &#x2F;&#x2F; 在即将进入新的页面组件前，关闭掉进度条</span><br><span class="line">    NProgress.done()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>5.通过 axios 拦截器来调用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// axios 请求拦截器 发起请求就会触发</span><br><span class="line">axios.interceptors.request.use(config =&gt; &#123;</span><br><span class="line">  // 发起请求则展示进度条</span><br><span class="line">  NProgress.start()</span><br><span class="line">  // 必须要返回config</span><br><span class="line">  return config;</span><br><span class="line">&#125;)</span><br><span class="line">// 请求有response后则触发</span><br><span class="line">axios.interceptors.response.use(config =&gt; &#123;</span><br><span class="line">  // 请求结束则结束进度条</span><br><span class="line">  NProgress.done()</span><br><span class="line">  // 必须要返回config</span><br><span class="line">  return config</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://liweipeng88.github.io/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/" data-id="ckcwrvk21000dj8ut1bio9cxw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "liweipeng"
+        },
+        "headline": "Vue项目跳转请求数据窗口上方的进度条显示",
+        "image": "https://liweipeng88.github.iohttps://s1.ax1x.com/2020/07/22/U7Zgrd.th.jpg",
+        "keywords": "vue",
+        "genre": "web前端 vue",
+        "datePublished": "2020-06-06",
+        "dateCreated": "2020-06-06",
+        "dateModified": "2020-07-22",
+        "url": "https://liweipeng88.github.io/2020/06/06/Vue项目跳转进度条显示/",
+        "description": "1.安装：
+1cnpm install --save nprogress
+
+2.在main.js中引入：
+121 import NProgress from &#39;nprogress&#39;2 import &#39;nprogress&#x2F;nprogress.css&#39;
+
+3.在main.js中进行配置：
+12345671 NProgress.configure(&#123; ",
+        "wordCount": 240
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/06/06/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">内网穿透的几种方式</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/U7Zgrd.th.jpg)" alt="Vue项目跳转请求数据窗口上方的进度条显示" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a></p>
+                            <p class="item-title"><a href="/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/" class="title">Vue项目跳转请求数据窗口上方的进度条显示</a></p>
+                            <p class="item-date"><time datetime="2020-06-05T16:00:00.000Z" itemprop="datePublished">2020-06-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/06/06/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/U7AdVP.jpg)" alt="内网穿透的几种方式" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a></p>
+                            <p class="item-title"><a href="/2020/06/06/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="title">内网穿透的几种方式</a></p>
+                            <p class="item-date"><time datetime="2020-06-05T16:00:00.000Z" itemprop="datePublished">2020-06-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/05/16/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/06/11/t7bcwV.jpg)" alt="浅谈前端八大UI库" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a></p>
+                            <p class="item-title"><a href="/2020/05/16/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/" class="title">浅谈前端八大UI库</a></p>
+                            <p class="item-date"><time datetime="2020-05-15T16:00:00.000Z" itemprop="datePublished">2020-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/05/express%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/22/UTzbDO.png)" alt="express常用的中间件" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/">框架</a></p>
+                            <p class="item-title"><a href="/2020/03/05/express%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" class="title">express常用的中间件</a></p>
+                            <p class="item-date"><time datetime="2020-03-04T16:00:00.000Z" itemprop="datePublished">2020-03-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/05/vue%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%9C%B0%E5%9D%80%E8%AF%B7%E6%B1%82%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/07/08/UEUhgs.jpg)" alt="根据地址栏输入的地址请求对应的接口数据" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a></p>
+                            <p class="item-title"><a href="/2020/03/05/vue%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%9C%B0%E5%9D%80%E8%AF%B7%E6%B1%82%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82/" class="title">根据地址栏输入的地址请求对应的接口数据</a></p>
+                            <p class="item-date"><time datetime="2020-03-04T16:00:00.000Z" itemprop="datePublished">2020-03-05</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/">UI库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/vue/">vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/">插件</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI%E5%BA%93/" rel="tag">UI库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" rel="tag">常用插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/UI%E5%BA%93/" style="font-size: 15px;">UI库</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 10px;">其他</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/" style="font-size: 10px;">常用插件</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 20px;">数据库</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/LiWeipeng88" target="_blank" rel="noopener">github</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 liweipeng</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://liweipeng88.github.io/2020/06/06/Vue%E9%A1%B9%E7%9B%AE%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%98%BE%E7%A4%BA/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>

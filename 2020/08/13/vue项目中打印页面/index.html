@@ -6,26 +6,26 @@
     
 
     
-    <title>MongoDB用户相关操作 | 李伟朋@博客</title>
+    <title>vue项目中打印页面 | 李伟朋@博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="数据库" />
+    <meta name="keywords" content="VUE" />
     
-    <meta name="description" content="用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https:&#x2F;&#x2F;docs.mongodb.com&#x2F;v3.6&#x2F;reference&#x2F;built-in-roles&#x2F;index.html 创建一个超级用户角色： 12345678use admin;db.createUser(  &amp;#123;    user: &quot;admin&quot;,    p">
+    <meta name="description" content="1.将要打印的视图源码包裹在section标签中 1&lt;section ref&#x3D;&quot;print&quot; class&#x3D;&quot;recordImg&quot; id&#x3D;&quot;printRecord&quot;&gt;&lt;&#x2F;setion&gt;  2.在utils文件中创建print.js 1234567891011121314151617181920212223242526272829303132333435363738394041">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB用户相关操作">
-<meta property="og:url" content="https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:title" content="vue项目中打印页面">
+<meta property="og:url" content="https://liweipeng88.github.io/2020/08/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%89%93%E5%8D%B0%E9%A1%B5%E9%9D%A2/index.html">
 <meta property="og:site_name" content="李伟朋@博客">
-<meta property="og:description" content="用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https:&#x2F;&#x2F;docs.mongodb.com&#x2F;v3.6&#x2F;reference&#x2F;built-in-roles&#x2F;index.html 创建一个超级用户角色： 12345678use admin;db.createUser(  &amp;#123;    user: &quot;admin&quot;,    p">
+<meta property="og:description" content="1.将要打印的视图源码包裹在section标签中 1&lt;section ref&#x3D;&quot;print&quot; class&#x3D;&quot;recordImg&quot; id&#x3D;&quot;printRecord&quot;&gt;&lt;&#x2F;setion&gt;  2.在utils文件中创建print.js 1234567891011121314151617181920212223242526272829303132333435363738394041">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s1.ax1x.com/2020/07/22/UTX46U.jpg">
-<meta property="article:published_time" content="2020-02-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-22T01:49:38.953Z">
+<meta property="og:image" content="https://s1.ax1x.com/2020/07/08/UEUhgs.jpg">
+<meta property="article:published_time" content="2020-08-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-17T04:23:29.700Z">
 <meta property="article:author" content="liweipeng">
-<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="VUE">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/22/UTX46U.jpg">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/07/08/UEUhgs.jpg">
     
 
     
@@ -155,19 +155,19 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a>
+    <a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/web%E5%89%8D%E7%AB%AF/Vue/">Vue</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-MongoDB 数据库常用操作命令（三）" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-vue项目中打印页面" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        MongoDB用户相关操作
+        vue项目中打印页面
         </h1>
     
 
@@ -178,8 +178,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" class="article-date">
-         <time datetime="2020-02-13T16:00:00.000Z" itemprop="datePublished">2020-02-14</time>
+      <a href="/2020/08/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%89%93%E5%8D%B0%E9%A1%B5%E9%9D%A2/" class="article-date">
+         <time datetime="2020-08-12T16:00:00.000Z" itemprop="datePublished">2020-08-13</time>
       </a>
     </div>
 
@@ -189,7 +189,7 @@
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+        <a class="tag-link" href="/tags/VUE/" rel="tag">VUE</a>
     </div>
 
                 
@@ -206,30 +206,18 @@
 
             
 
-            <h2 id="用户相关操作"><a href="#用户相关操作" class="headerlink" title="用户相关操作"></a>用户相关操作</h2><p>如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：<a href="https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html" target="_blank" rel="noopener">https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html</a></p>
-<p>创建一个超级用户角色：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;pwd123&quot;,</span><br><span class="line">    roles: [ &quot;root&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+            <p>1.将要打印的视图源码包裹在section标签中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">ref</span>=<span class="string">"print"</span> <span class="attr">class</span>=<span class="string">"recordImg"</span> <span class="attr">id</span>=<span class="string">"printRecord"</span>&gt;</span><span class="tag">&lt;/<span class="name">setion</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>root角色为所有资源提供完全权限，相当于MySQL里的 root 账户。</p>
-<p>在 testdb 数据库中创建一个 testuser 账户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use testdb;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;testuser&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &#123; role: &quot;dbOwner&quot;, db: &quot;testdb&quot; &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>2.在utils文件中创建print.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 打印类属性、方法定义</span></span><br><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line"><span class="keyword">const</span> Print = <span class="function"><span class="keyword">function</span> (<span class="params">dom, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Print)) <span class="keyword">return</span> <span class="keyword">new</span> Print(dom, options);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.options = <span class="keyword">this</span>.extend(&#123;</span><br><span class="line">    <span class="string">'noPrint'</span>: <span class="string">'.no-print'</span></span><br><span class="line">  &#125;, options);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((<span class="keyword">typeof</span> dom) === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.dom = <span class="built_in">document</span>.querySelector(dom);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.isDOM(dom)</span><br><span class="line">    <span class="keyword">this</span>.dom = <span class="keyword">this</span>.isDOM(dom) ? dom : dom.$el;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.init();</span><br><span class="line">&#125;;</span><br><span class="line">Print.prototype = &#123;</span><br><span class="line">  init: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> content = <span class="keyword">this</span>.getStyle() + <span class="keyword">this</span>.getHtml();</span><br><span class="line">    <span class="keyword">this</span>.writeIframe(content);</span><br><span class="line">  &#125;,</span><br><span class="line">  extend: <span class="function"><span class="keyword">function</span> (<span class="params">obj, obj2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj2) &#123;</span><br><span class="line">      obj[k] = obj2[k];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getStyle: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">""</span>,</span><br><span class="line">      styles = <span class="built_in">document</span>.querySelectorAll(<span class="string">'style,link'</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; styles.length; i++) &#123;</span><br><span class="line">      str += styles[i].outerHTML;</span><br><span class="line">    &#125;</span><br><span class="line">    str += <span class="string">"&lt;style&gt;"</span> + (<span class="keyword">this</span>.options.noPrint ? <span class="keyword">this</span>.options.noPrint : <span class="string">'.no-print'</span>) + <span class="string">"&#123;display:none;&#125;&lt;/style&gt;"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  getHtml: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> inputs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'input'</span>);</span><br><span class="line">    <span class="keyword">var</span> textareas = <span class="built_in">document</span>.querySelectorAll(<span class="string">'textarea'</span>);</span><br><span class="line">    <span class="keyword">var</span> selects = <span class="built_in">document</span>.querySelectorAll(<span class="string">'select'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; inputs.length; k++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (inputs[k].type == <span class="string">"checkbox"</span> || inputs[k].type == <span class="string">"radio"</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (inputs[k].checked == <span class="literal">true</span>) &#123;</span><br><span class="line">          inputs[k].setAttribute(<span class="string">'checked'</span>, <span class="string">"checked"</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          inputs[k].removeAttribute(<span class="string">'checked'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (inputs[k].type == <span class="string">"text"</span>) &#123;</span><br><span class="line">        inputs[k].setAttribute(<span class="string">'value'</span>, inputs[k].value)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        inputs[k].setAttribute(<span class="string">'value'</span>, inputs[k].value)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k2 = <span class="number">0</span>; k2 &lt; textareas.length; k2++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (textareas[k2].type == <span class="string">'textarea'</span>) &#123;</span><br><span class="line">        textareas[k2].innerHTML = textareas[k2].value</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> k3 = <span class="number">0</span>; k3 &lt; selects.length; k3++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (selects[k3].type == <span class="string">'select-one'</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> child = selects[k3].children;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> child) &#123;</span><br><span class="line">          <span class="keyword">if</span> (child[i].tagName == <span class="string">'OPTION'</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (child[i].selected == <span class="literal">true</span>) &#123;</span><br><span class="line">              child[i].setAttribute(<span class="string">'selected'</span>, <span class="string">"selected"</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              child[i].removeAttribute(<span class="string">'selected'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dom.outerHTML;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  writeIframe: <span class="function"><span class="keyword">function</span> (<span class="params">content</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> w, doc, iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>),</span><br><span class="line">      f = <span class="built_in">document</span>.body.appendChild(iframe);</span><br><span class="line">    iframe.id = <span class="string">"myIframe"</span>;</span><br><span class="line">    <span class="comment">//iframe.style = "position:absolute;width:0;height:0;top:-10px;left:-10px;";</span></span><br><span class="line">    iframe.setAttribute(<span class="string">'style'</span>, <span class="string">'position:absolute;width:0;height:0;top:-10px;left:-10px;'</span>);</span><br><span class="line">    w = f.contentWindow || f.contentDocument;</span><br><span class="line">    doc = f.contentDocument || f.contentWindow.document;</span><br><span class="line">    doc.open();</span><br><span class="line">    doc.write(content);</span><br><span class="line">    doc.close();</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    iframe.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      _this.toPrint(w);</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(iframe)</span><br><span class="line">      &#125;, <span class="number">100</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  toPrint: <span class="function"><span class="keyword">function</span> (<span class="params">frameWindow</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        frameWindow.focus();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (!frameWindow.document.execCommand(<span class="string">'print'</span>, <span class="literal">false</span>, <span class="literal">null</span>)) &#123;</span><br><span class="line">            frameWindow.print();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          frameWindow.print();</span><br><span class="line">        &#125;</span><br><span class="line">        frameWindow.close();</span><br><span class="line">      &#125;, <span class="number">10</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'err'</span>, err);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  isDOM: (<span class="keyword">typeof</span> HTMLElement === <span class="string">'object'</span>) ?</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> obj <span class="keyword">instanceof</span> HTMLElement;</span><br><span class="line">    &#125; :</span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> obj &amp;&amp; <span class="keyword">typeof</span> obj === <span class="string">'object'</span> &amp;&amp; obj.nodeType === <span class="number">1</span> &amp;&amp; <span class="keyword">typeof</span> obj.nodeName === <span class="string">'string'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> MyPlugin = &#123;&#125;</span><br><span class="line">MyPlugin.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue, options</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 4. 添加实例方法</span></span><br><span class="line">  Vue.prototype.$print = Print</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> MyPlugin</span><br></pre></td></tr></table></figure>
 
-<p><code>dbOwner</code>代表数据库所有者，可以对数据库执行任何管理操作，包含<code>readWrite</code>、<code>dbAdmin</code>和<code>userAdmin</code>角色的权限。</p>
-<p>在 admin 库中创建一个具有多个权限的账户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">user admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123; user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &quot;userAdminAnyDatabase&quot;, &quot;dbAdminAnyDatabase&quot;, &quot;readWriteAnyDatabase&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line">show users;            # 显示当前库所有用户</span><br><span class="line">db.getUser(&#39;admin&#39;);   # 查看用户详情</span><br><span class="line">db.dropUser(&quot;admin&quot;);  # 删除用户</span><br><span class="line">db.logout();           # 退出当前登录</span><br><span class="line"></span><br><span class="line"># 修改用户密码</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(&quot;testuser&quot;, &#123;pwd: &quot;123456789&quot;&#125;);</span><br><span class="line">db.changeUserPassword(&quot;testuser&quot;, &quot;123456789&quot;);</span><br><span class="line"></span><br><span class="line"># 修改用户角色</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(</span><br><span class="line">  &quot;&lt;username&gt;&quot;,</span><br><span class="line">  roles : [&#123; role: &quot;&quot;, db: &quot;&quot; &#125;]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>3.将MyPlugin方法挂在到Vue原型上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> print <span class="keyword">from</span> <span class="string">'../utils/print'</span></span><br><span class="line">Vue.use(print)</span><br></pre></td></tr></table></figure>
 
-<p>用户相关操作文档：<a href="https://docs.mongodb.com/manual/reference/method/js-user-management/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/reference/method/js-user-management/</a></p>
-<h2 id="连接数据库身份验证"><a href="#连接数据库身份验证" class="headerlink" title="连接数据库身份验证"></a>连接数据库身份验证</h2><p>连接后身份验证：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000</span><br><span class="line">use admin;</span><br><span class="line">db.auth(&quot;testuser&quot;, &quot;123456&quot;);</span><br></pre></td></tr></table></figure>
+<p>4.定义事件方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PrintRow(index, row) &#123;</span><br><span class="line">        <span class="keyword">this</span>.$print(<span class="keyword">this</span>.$refs.print) <span class="comment">// 使用</span></span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
 
-<p>连接时身份验证：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 27017 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br></pre></td></tr></table></figure>
-
-<p>连接时身份验证，并进入指定库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br><span class="line">mongo --port 20000 -u &quot;testuser&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot; testdb</span><br></pre></td></tr></table></figure>
-
-<p>代码、客户端连接方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongodb:&#x2F;&#x2F;testuser:123456789@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;testdb</span><br><span class="line">mongodb:&#x2F;&#x2F;root:pwd123@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;admin</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -237,7 +225,7 @@
 
 
 
-    <a data-url="https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/" data-id="ckdy98f9g0005n4ut7jyr4ztn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://liweipeng88.github.io/2020/08/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%89%93%E5%8D%B0%E9%A1%B5%E9%9D%A2/" data-id="ckdy98fc0001on4ut9sivh8is" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -307,18 +295,20 @@
             "@type": "Person",
             "name": "liweipeng"
         },
-        "headline": "MongoDB用户相关操作",
-        "image": "https://liweipeng88.github.iohttps://s1.ax1x.com/2020/07/22/UTX46U.jpg",
-        "keywords": "数据库",
-        "genre": "后端 MongoDB",
-        "datePublished": "2020-02-14",
-        "dateCreated": "2020-02-14",
-        "dateModified": "2020-07-22",
-        "url": "https://liweipeng88.github.io/2020/02/14/MongoDB 数据库常用操作命令（三）/",
-        "description": "用户相关操作如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html
-创建一个超级用户角色：
-12345678use admin;db.createUser(  &#123;    user: &quot;admin&quot;,    p",
-        "wordCount": 294
+        "headline": "vue项目中打印页面",
+        "image": "https://liweipeng88.github.iohttps://s1.ax1x.com/2020/07/08/UEUhgs.jpg",
+        "keywords": "VUE",
+        "genre": "web前端 Vue",
+        "datePublished": "2020-08-13",
+        "dateCreated": "2020-08-13",
+        "dateModified": "2020-08-17",
+        "url": "https://liweipeng88.github.io/2020/08/13/vue项目中打印页面/",
+        "description": "1.将要打印的视图源码包裹在section标签中
+1&lt;section ref="print" class="recordImg" id="printRecord"&gt;&lt;/setion&gt;
+
+2.在utils文件中创建print.js
+1234567891011121314151617181920212223242526272829303132333435363738394041",
+        "wordCount": 1388
     }
 </script>
 
@@ -399,20 +389,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2020/02/15/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%9B%9B%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            MongoDB 数据库优化操作
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2020/02/13/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/07/29/Echarts%20%E4%B8%AD%E6%96%87%20API%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">MongoDB 增删改查 集合数据</p>
+        <p class="article-nav-title">Echarts 中文 API说明文档</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -633,7 +613,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://liweipeng88.github.io/2020/02/14/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%B8%89%EF%BC%89/';
+    var disqus_url = 'https://liweipeng88.github.io/2020/08/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%89%93%E5%8D%B0%E9%A1%B5%E9%9D%A2/';
     
     (function() {
     var dsq = document.createElement('script');

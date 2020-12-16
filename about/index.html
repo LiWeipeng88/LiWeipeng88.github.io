@@ -1,29 +1,86 @@
-extends includes/layout.pug
-
-block content
-  if page.type === 'tags'
-    .tag-cloud
-      .tag-cloud__title= _p('page.tag')
-        |  - 
-        span.tag-cloud__amount= site.tags.length
-      - var start_color = theme.theme_color ? (theme.theme_color.tag_start_color || '#A4D8FA'): '#A4D8FA'
-      - var end_color = theme.theme_color ? (theme.theme_color.tag_end_color || '#1B9EF3') : '#1B9EF3'
-      .tag-cloud-tags!= tagcloud({min_font: 12, max_font: 30, amount: 200, color: true, start_color, end_color})
-  else if page.type === 'categories'
-    #post-content
-      .category-lists
-        .category__title= _p('page.category')
-          |  - 
-          span.category__amount= site.categories.length
-        div!= list_categories()
-  else if page.type === 'slides'
-    include ./includes/mixins/slide.pug
-    +slideArticle()
-  else
-    article#page
-      h1= page.title
-      .article-container!= page.content
-    include includes/pagination.pug
-
-  if page.comments !== false
-    include includes/comments/index.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="about"><meta name="keywords" content=""><meta name="author" content="liweipeng"><meta name="copyright" content="liweipeng"><title>about | 李伟朋@博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '4.2.1'
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="李伟朋@博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">liweipeng</div><div class="author-info__description text-center">Today's pay, tomorrow's harvest</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">24</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">李伟朋@博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right"></span></div><div id="site-info"><div id="site-title">李伟朋@博客</div><div id="site-sub-title">Today's pay, tomorrow's harvest</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><article id="page"><h1>about</h1><div class="article-container"><h3 id="1-基本信息"><a href="#1-基本信息" class="headerlink" title="1. 基本信息"></a>1. 基本信息</h3><table>
+<thead>
+<tr>
+<th align="center">姓名</th>
+<th align="center">电话</th>
+<th align="center">毕业院校</th>
+<th align="center">学历</th>
+<th align="center">邮箱</th>
+<th align="center">工作经验</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">李伟朋</td>
+<td align="center">15769294114</td>
+<td align="center">西安电子科技大学</td>
+<td align="center">大专</td>
+<td align="center"><a href="mailto:liweipeng_it@163.com">liweipeng_it@163.com</a></td>
+<td align="center">3 年以上</td>
+</tr>
+</tbody></table>
+<p><strong>Github</strong>：<a href="https://github.com/LiWeipeng88" target="_blank" rel="noopener">https://github.com/LiWeipeng88</a></p>
+<h3 id="2-求职意向"><a href="#2-求职意向" class="headerlink" title="2. 求职意向"></a>2. 求职意向</h3><p>工作地点：西安                     期望职位：Web 前端工程师</p>
+<h3 id="3-个人能力"><a href="#3-个人能力" class="headerlink" title="3. 个人能力"></a>3. 个人能力</h3><ul>
+<li><p>能熟练使用前端开发工具Visual Studio Code、Photoshop 、FTP</p>
+</li>
+<li><p>熟练掌握HTML5和CSS3、Sass、熟悉PC端与移动端页面架构和布局。</p>
+</li>
+<li><p>掌握JavaScript脚本语言及jQuery、Swiper、Common js、Iconfonts等Js类库，应用JavaScript或jQuery等实现页面动态效果以及交互效果</p>
+</li>
+<li><p>熟练掌握VUE 框架以及VUE全家桶(Vue+Vue-router+Vuex+Axios+Webpack）等第三方插件，ElementUI，Mint-ui 等组件库，了解ES6、TypeScript语法。</p>
+</li>
+<li><p>熟悉Node.js开发，能够使用Nodejs和Express、Mongodb实现服务器端功能，访问数据库</p>
+</li>
+</ul>
+<h3 id="4-项目经验"><a href="#4-项目经验" class="headerlink" title="4. 项目经验"></a>4. 项目经验</h3><p><strong>项目名称：</strong> <strong>财务综合服务平台</strong></p>
+<p>项目简介：集项目预算（预算模板，预算通知）、项目报销（差旅报销，日常报销）以及系统设置（权限分配、流程设置）和基础信息（部门、项目、人事、职务）的综合服务平台。</p>
+<p>我的职责：项目前端架构及技术选型，与后端沟通数据结构和Api接口的设计，前后端接口联调，部署服务器。</p>
+<hr>
+<p><strong>项目名称：</strong> <strong>古城张记 <a href="http://www.xazhangji.com" target="_blank" rel="noopener">www.xazhangji.com</a></strong></p>
+<p>项目简介：项目为西安古城张记美食公司所制作的官方网站，该项目已美食为主，突出特色食品，各种档次的快餐食品汇聚于此，公司主要以此网站宣传公司品牌，打造中国餐饮业的中国梦。</p>
+<p>我的职责：负责UI界面设计，网页样式、动态效果的实现网站备案及域名解析</p>
+<hr>
+<p><strong>项目名称：</strong> <strong>柒個秋天（微信小程序）</strong></p>
+<p>项目简介：项目是一个线上团购的社区销售商品的小程序，主要有商品秒杀、商品展示、线上下单、个人中心、商品兑换等为一体的社区团购平台。</p>
+<p>我的职责：根据客户需求与后端，UI共同沟通界面设计和数据结构，项目架构及开发及测试发布。</p>
+<hr>
+<p><strong>项目名称：</strong> <strong>库存管理系统</strong></p>
+<p>项目简介：针对前台项目的业务逻辑处理，实现库存管理、添加、修改、删除的功能；用户管理的注册、登录；对各个库存的统计以及按年、按周统计。对库存的管理有便捷的方式。</p>
+<p>我的职责：根据业务需求选择技术框架和项目功能的梳理以及数据结构的设计完成开发。</p>
+<h3 id="5-工作经历"><a href="#5-工作经历" class="headerlink" title="5.工作经历"></a>5.工作经历</h3><p><strong>2019年10月~至今</strong>                <strong>西安纳学电子科技有限责任公司</strong>                 <strong>职位：WEB前端开发工程师</strong></p>
+<p>工作内容：从产品需求确定到技术架构总体参与，完成项目开发及后台数据对接，BUG测试及项目部署。参与产品功能设计，布局及页面优化兼容性处理。与后端配合完成产品需求及功能设计，配合UI 完成页面设计功能制定。项目持续跟进及客户使用反馈，优化产品易用性。</p>
+<hr>
+<p><strong>2017年3月~2019年9月</strong>           <strong>陕西奥度信息技术有限公司</strong>                  <strong>职位：WEB前端开发工程师</strong></p>
+<p>工作内容：网站设计、UI设计、网站维护、PC前端开发和移动端开发与调试，小程序开发代，SEO优化，网站维护，图片设计，网站备案及域名解析。</p>
+<h3 id="6-教育经历"><a href="#6-教育经历" class="headerlink" title="6.教育经历"></a>6.教育经历</h3><table>
+<thead>
+<tr>
+<th align="center">学校名称</th>
+<th align="center">学习时间</th>
+<th align="center">学历</th>
+<th align="center">专业</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">西安电子科技大学</td>
+<td align="center">2020.8</td>
+<td align="center">大专</td>
+<td align="center">软件技术</td>
+</tr>
+</tbody></table>
+</div></article><nav id="pagination"><div class="pagination"></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By liweipeng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

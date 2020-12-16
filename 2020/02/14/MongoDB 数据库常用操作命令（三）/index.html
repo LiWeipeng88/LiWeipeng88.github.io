@@ -1,107 +1,40 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="MongoDB用户相关操作"><meta name="keywords" content="数据库"><meta name="author" content="liweipeng"><meta name="copyright" content="liweipeng"><title>MongoDB用户相关操作 | 李伟朋@博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '4.2.1'
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="李伟朋@博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#用户相关操作"><span class="toc-number">1.</span> <span class="toc-text">用户相关操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连接数据库身份验证"><span class="toc-number">2.</span> <span class="toc-text">连接数据库身份验证</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">liweipeng</div><div class="author-info__description text-center">Today's pay, tomorrow's harvest</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">24</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">李伟朋@博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right"></span></div><div id="post-info"><div id="post-title">MongoDB用户相关操作</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%90%8E%E7%AB%AF/MongoDB/">MongoDB</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="用户相关操作"><a href="#用户相关操作" class="headerlink" title="用户相关操作"></a>用户相关操作</h2><p>如果系统已经启动权限验证，必须使用拥有权限的账户登录操作。mongodb角色权限文档：<a href="https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html" target="_blank" rel="noopener">https://docs.mongodb.com/v3.6/reference/built-in-roles/index.html</a></p>
+<p>创建一个超级用户角色：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;pwd123&quot;,</span><br><span class="line">    roles: [ &quot;root&quot; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
+<p>root角色为所有资源提供完全权限，相当于MySQL里的 root 账户。</p>
+<p>在 testdb 数据库中创建一个 testuser 账户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use testdb;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123;</span><br><span class="line">    user: &quot;testuser&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &#123; role: &quot;dbOwner&quot;, db: &quot;testdb&quot; &#125; ]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(decodeURI(page.permalink))) #[=decodeURI(page.permalink)]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<p><code>dbOwner</code>代表数据库所有者，可以对数据库执行任何管理操作，包含<code>readWrite</code>、<code>dbAdmin</code>和<code>userAdmin</code>角色的权限。</p>
+<p>在 admin 库中创建一个具有多个权限的账户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">user admin;</span><br><span class="line">db.createUser(</span><br><span class="line">  &#123; user: &quot;admin&quot;,</span><br><span class="line">    pwd: &quot;123456&quot;,</span><br><span class="line">    roles: [ &quot;userAdminAnyDatabase&quot;, &quot;dbAdminAnyDatabase&quot;, &quot;readWriteAnyDatabase&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line">show users;            # 显示当前库所有用户</span><br><span class="line">db.getUser(&#39;admin&#39;);   # 查看用户详情</span><br><span class="line">db.dropUser(&quot;admin&quot;);  # 删除用户</span><br><span class="line">db.logout();           # 退出当前登录</span><br><span class="line"></span><br><span class="line"># 修改用户密码</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(&quot;testuser&quot;, &#123;pwd: &quot;123456789&quot;&#125;);</span><br><span class="line">db.changeUserPassword(&quot;testuser&quot;, &quot;123456789&quot;);</span><br><span class="line"></span><br><span class="line"># 修改用户角色</span><br><span class="line">use testdb;</span><br><span class="line">db.updateUser(</span><br><span class="line">  &quot;&lt;username&gt;&quot;,</span><br><span class="line">  roles : [&#123; role: &quot;&quot;, db: &quot;&quot; &#125;]</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>用户相关操作文档：<a href="https://docs.mongodb.com/manual/reference/method/js-user-management/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/reference/method/js-user-management/</a></p>
+<h2 id="连接数据库身份验证"><a href="#连接数据库身份验证" class="headerlink" title="连接数据库身份验证"></a>连接数据库身份验证</h2><p>连接后身份验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000</span><br><span class="line">use admin;</span><br><span class="line">db.auth(&quot;testuser&quot;, &quot;123456&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>连接时身份验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 27017 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br></pre></td></tr></table></figure>
+
+<p>连接时身份验证，并进入指定库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 20000 -u &quot;root&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot;</span><br><span class="line">mongo --port 20000 -u &quot;testuser&quot; -p &quot;123456&quot; --authenticationDatabase &quot;admin&quot; testdb</span><br></pre></td></tr></table></figure>
+
+<p>代码、客户端连接方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongodb:&#x2F;&#x2F;testuser:123456789@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;testdb</span><br><span class="line">mongodb:&#x2F;&#x2F;root:pwd123@192.168.0.3:20000,192.168.0.4:20000,192.168.0.5:20000&#x2F;admin</span><br></pre></td></tr></table></figure>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">liweipeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://liweipeng88.github.io/2020/02/14/MongoDB 数据库常用操作命令（三）/">https://liweipeng88.github.io/2020/02/14/MongoDB 数据库常用操作命令（三）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/02/15/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E5%9B%9B%EF%BC%89/"><i class="fa fa-chevron-left">  </i><span>MongoDB 数据库优化操作</span></a></div><div class="next-post pull-right"><a href="/2020/02/13/MongoDB%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4%EF%BC%88%E4%BA%8C%EF%BC%89/"><span>MongoDB 增删改查 集合数据</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By liweipeng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

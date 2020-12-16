@@ -1,107 +1,44 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="setInterval与setTimeout的区别"><meta name="keywords" content="JS"><meta name="author" content="liweipeng"><meta name="copyright" content="liweipeng"><title>setInterval与setTimeout的区别 | 李伟朋@博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '4.2.1'
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="李伟朋@博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-setInterval与setTimeout的区别"><span class="toc-number">1.</span> <span class="toc-text">一.setInterval与setTimeout的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-setTimeout-的用法"><span class="toc-number">2.</span> <span class="toc-text">二.setTimeout()的用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-clearTimeout"><span class="toc-number">3.</span> <span class="toc-text">三.clearTimeout()</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">liweipeng</div><div class="author-info__description text-center">Today's pay, tomorrow's harvest</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">24</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">李伟朋@博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right"></span></div><div id="post-info"><div id="post-title">setInterval与setTimeout的区别</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-11-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web%E5%89%8D%E7%AB%AF/JS/">JS</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>在制作网页动态效果时，一定会遇到某些需求，要求某段程序等待多时时间后再开始执行，就像在我们的生活中一样，待会儿再开始做一件事。在JavaScript中主要通过定时器实现此类需求，本文将对定时器做一个概括，正对setTimeout()做一个详细用法总结。</p>
+<h2 id="一-setInterval与setTimeout的区别"><a href="#一-setInterval与setTimeout的区别" class="headerlink" title="一.setInterval与setTimeout的区别"></a>一.setInterval与setTimeout的区别</h2><p><strong>setInterval</strong></p>
+<p>setInterval()方法可按照指定的周期来调用函数或者计算表达式（以毫秒为单位）</p>
+<p><strong>语法：</strong></p>
+<p>setInterval(函数表达式，毫秒数)；</p>
+<p>setInterval()会不停的调用函数，直到clearInterval()被调用或者窗口被关闭，由 setInterval()返回的ID值可用作clearInterval()方法的参数。</p>
+<p><strong>setTimeout</strong></p>
+<p>setTimeout()方法用于在指定毫秒数后再调用函数或者计算表达式（以毫秒为单位）</p>
+<p><strong>语法：</strong></p>
+<p>setTimeout(函数表达式，毫秒数)；</p>
+<p>setTimeout()只执行函数一次，如果需要多次调用可以使用setInterval(),或者在函数体内再次调用setTimeout()</p>
+<p><strong>区别</strong></p>
+<p>　　通过以上分析可以看出，setTimeout与setInterval的主要区别是:</p>
+<p>　　setTimeout()方法只运行一次，也就是说当达到设定的时间后就出发运行指定的代码，运行完后就结束了，如果还想再次执行同样的函数，可以在函数体内再次调用setTimeout()，可以达到循环调用的效果。</p>
+<p>　　setInterval()是循环执行的，即每达到指定的时间间隔就执行相应的函数或者表达式，是真正的定时器。</p>
+<h2 id="二-setTimeout-的用法"><a href="#二-setTimeout-的用法" class="headerlink" title="二.setTimeout()的用法"></a>二.setTimeout()的用法</h2><p>　　先写个最简单的demo，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1 <span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"> 2  <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"> 3      <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> 4            <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"> 5            <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"> <span class="number">6</span>                   setTimeout(<span class="string">"alert('hello')"</span>,<span class="number">2000</span>);</span></span><br><span class="line"> 7            <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> 8      <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> 9     <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">10     <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">11 <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>页面会在停留2秒之后弹出对话框,注意setTimeout不会自动重复执行！</p>
+<p>当然，setTimeout也可以执行function，还可以不断重复执行！</p>
+<p>你可以看到h1中的文本数字在一秒一秒地递增！</p>
+<p>更加灵活的是，你还可以指定重复执行的次数，如下：</p>
+<p>if判断中的数字，是用来限制重复执行次数的条件。</p>
+<h2 id="三-clearTimeout"><a href="#三-clearTimeout" class="headerlink" title="三.clearTimeout()"></a>三.clearTimeout()</h2><p>要使用clearTimeout()，需要我们设定setTimeout()时， 给予这setTimeout()一个名称, 这名称就是timeoutID ，我们叫停时，就是用这 timeoutID 来叫停</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 1  <span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"> 2   <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"> 3       <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"> 4             <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"> 5             <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"> <span class="number">6</span>                   <span class="keyword">var</span> timeId= setTimeout(<span class="string">"alert('hello')"</span>,<span class="number">2000</span>);</span></span><br><span class="line"> 7                    clearTimeout(timeId);</span><br><span class="line"> 8             <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> 9       <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">10      <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">11      <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">12  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(decodeURI(page.permalink))) #[=decodeURI(page.permalink)]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<p>原计划1秒后弹出的警示框，被自然叫停了。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">liweipeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://liweipeng88.github.io/2019/11/22/setInterval与setTimeout的区别/">https://liweipeng88.github.io/2019/11/22/setInterval与setTimeout的区别/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/12/12/nodejs%E5%B8%B8%E7%94%A8%E5%8C%85/"><i class="fa fa-chevron-left">  </i><span>nodejs常用包</span></a></div><div class="next-post pull-right"><a href="/2019/11/16/%E5%BC%80%E5%8F%91%E3%80%81%E6%B5%8B%E8%AF%95%E3%80%81%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E7%81%B5%E6%B4%BB%E9%85%8D%E7%BD%AE/"><span>开发测试环境的灵活配置</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By liweipeng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

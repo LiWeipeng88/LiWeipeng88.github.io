@@ -1,107 +1,52 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="nodejs常用包"><meta name="keywords" content="nodejs"><meta name="author" content="liweipeng"><meta name="copyright" content="liweipeng"><title>nodejs常用包 | 李伟朋@博客</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '4.2.1'
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="李伟朋@博客" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-lazyload"><span class="toc-number">1.</span> <span class="toc-text">vue-lazyload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#axios"><span class="toc-number">2.</span> <span class="toc-text">axios</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#amfe-flexible"><span class="toc-number">3.</span> <span class="toc-text">amfe-flexible</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-meta"><span class="toc-number">4.</span> <span class="toc-text">vue-meta</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#webpack-bundle-analyzer"><span class="toc-number">5.</span> <span class="toc-text">webpack-bundle-analyzer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#html-webpack-include-assets-plugin"><span class="toc-number">6.</span> <span class="toc-text">html-webpack-include-assets-plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-awesome-swiper"><span class="toc-number">7.</span> <span class="toc-text">vue-awesome-swiper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#swiper-animate1-0-3-min-js"><span class="toc-number">8.</span> <span class="toc-text">swiper.animate1.0.3.min.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-wechat-title"><span class="toc-number">9.</span> <span class="toc-text">vue-wechat-title</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uuid"><span class="toc-number">10.</span> <span class="toc-text">uuid</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#md5"><span class="toc-number">11.</span> <span class="toc-text">md5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#weixin-js-sdk"><span class="toc-number">12.</span> <span class="toc-text">weixin-js-sdk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nodemon"><span class="toc-number">13.</span> <span class="toc-text">nodemon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rimraf"><span class="toc-number">14.</span> <span class="toc-text">rimraf</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#babel-polyfill"><span class="toc-number">15.</span> <span class="toc-text">babel-polyfill</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#qs"><span class="toc-number">16.</span> <span class="toc-text">qs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fastclick"><span class="toc-number">17.</span> <span class="toc-text">fastclick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#fs-extra"><span class="toc-number">18.</span> <span class="toc-text">fs-extra</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-contextmenu"><span class="toc-number">19.</span> <span class="toc-text">vue-contextmenu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-touch"><span class="toc-number">20.</span> <span class="toc-text">vue-touch</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vuex-persistedstate"><span class="toc-number">21.</span> <span class="toc-text">vuex-persistedstate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#es6-promise"><span class="toc-number">22.</span> <span class="toc-text">es6-promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vconsole"><span class="toc-number">23.</span> <span class="toc-text">vconsole</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#script-loader"><span class="toc-number">24.</span> <span class="toc-text">script-loader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#animate-css"><span class="toc-number">25.</span> <span class="toc-text">animate.css</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-pano"><span class="toc-number">26.</span> <span class="toc-text">vue-pano</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#better-scroll"><span class="toc-number">27.</span> <span class="toc-text">better-scroll</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-amap"><span class="toc-number">28.</span> <span class="toc-text">vue-amap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-ba"><span class="toc-number">29.</span> <span class="toc-text">vue-ba</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue-kindedtior"><span class="toc-number">30.</span> <span class="toc-text">vue-kindedtior</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">liweipeng</div><div class="author-info__description text-center">Today's pay, tomorrow's harvest</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">24</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">12</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">15</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">李伟朋@博客</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right"></span></div><div id="post-info"><div id="post-title">nodejs常用包</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-12-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/web%E5%89%8D%E7%AB%AF/nodejs/">nodejs</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h4 id="vue-lazyload"><a href="#vue-lazyload" class="headerlink" title="vue-lazyload"></a>vue-lazyload</h4><p>图片懒加载，功能很全</p>
+<h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4><p>支持 promise 的 http 库</p>
+<h4 id="amfe-flexible"><a href="#amfe-flexible" class="headerlink" title="amfe-flexible"></a>amfe-flexible</h4><p>移动端适配</p>
+<h4 id="vue-meta"><a href="#vue-meta" class="headerlink" title="vue-meta"></a>vue-meta</h4><p>组件中动态修改 head 标签里面的内容</p>
+<h4 id="webpack-bundle-analyzer"><a href="#webpack-bundle-analyzer" class="headerlink" title="webpack-bundle-analyzer"></a>webpack-bundle-analyzer</h4><p>打包完成后显示体积相关信息，可以了解是否重复加载,哪些文件过大等</p>
+<h4 id="html-webpack-include-assets-plugin"><a href="#html-webpack-include-assets-plugin" class="headerlink" title="html-webpack-include-assets-plugin"></a>html-webpack-include-assets-plugin</h4><p>用于添加 js 或 css 文件路径</p>
+<h4 id="vue-awesome-swiper"><a href="#vue-awesome-swiper" class="headerlink" title="vue-awesome-swiper"></a>vue-awesome-swiper</h4><p>移动端轮播图插件</p>
+<h4 id="swiper-animate1-0-3-min-js"><a href="#swiper-animate1-0-3-min-js" class="headerlink" title="swiper.animate1.0.3.min.js"></a>swiper.animate1.0.3.min.js</h4><p>动画过渡插件</p>
+<h4 id="vue-wechat-title"><a href="#vue-wechat-title" class="headerlink" title="vue-wechat-title"></a>vue-wechat-title</h4><p>微信动态设置标题</p>
+<h4 id="uuid"><a href="#uuid" class="headerlink" title="uuid"></a>uuid</h4><p>生成 uid(唯一标识符)</p>
+<h4 id="md5"><a href="#md5" class="headerlink" title="md5"></a>md5</h4><p>md5 加密</p>
+<h4 id="weixin-js-sdk"><a href="#weixin-js-sdk" class="headerlink" title="weixin-js-sdk"></a>weixin-js-sdk</h4><p>微信的 jssdk 库(微信分享)</p>
+<h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4><p>用 nodemon 来代替 node 来启动应用</p>
+<h4 id="rimraf"><a href="#rimraf" class="headerlink" title="rimraf"></a>rimraf</h4><p>以包的形式包装 rm -rf 命令，用来删除文件和文件夹的，不管文件夹是否为空，都可删除</p>
+<h4 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h4><p>IE9 不支持 Promise,需安装 babel-polyfill</p>
+<h4 id="qs"><a href="#qs" class="headerlink" title="qs"></a>qs</h4><p>数据格式转换插件，配合 axios 使用</p>
+<h4 id="fastclick"><a href="#fastclick" class="headerlink" title="fastclick"></a>fastclick</h4><p>移动端项目，点击事件会有 300ms 延迟的问题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> FastClick <span class="keyword">from</span> <span class="string">'fastclick'</span> <span class="comment">// 解决移动端300毫秒延迟</span></span><br><span class="line"><span class="keyword">if</span> (<span class="string">'addEventListener'</span> <span class="keyword">in</span> <span class="built_in">document</span>) &#123;</span><br><span class="line">  <span class="built_in">document</span>.addEventListener(</span><br><span class="line">    <span class="string">'DOMContentLoaded'</span>,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      FastClick.attach(<span class="built_in">document</span>.body)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="literal">false</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
+<h4 id="fs-extra"><a href="#fs-extra" class="headerlink" title="fs-extra"></a>fs-extra</h4><p>fs-extra 是 fs 的一个扩展</p>
+<h4 id="vue-contextmenu"><a href="#vue-contextmenu" class="headerlink" title="vue-contextmenu"></a>vue-contextmenu</h4><p>右键弹出菜单插件</p>
+<h4 id="vue-touch"><a href="#vue-touch" class="headerlink" title="vue-touch"></a>vue-touch</h4><p>装了 hammer.js 的方法</p>
+<h4 id="vuex-persistedstate"><a href="#vuex-persistedstate" class="headerlink" title="vuex-persistedstate"></a>vuex-persistedstate</h4><p>vuex 数据持久化</p>
+<h4 id="es6-promise"><a href="#es6-promise" class="headerlink" title="es6-promise"></a>es6-promise</h4><p>require(‘es6-promise’).polyfill()</p>
+<h4 id="vconsole"><a href="#vconsole" class="headerlink" title="vconsole"></a>vconsole</h4><p>手机端调试 console</p>
+<h4 id="script-loader"><a href="#script-loader" class="headerlink" title="script-loader"></a>script-loader</h4><p>在全局上下文执行了一次 file.js 文档</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.exec\.js$/</span>,</span><br><span class="line">        use: [<span class="string">'script-loader'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> exec <span class="keyword">from</span> <span class="string">'script-loader!./script.js'</span></span><br></pre></td></tr></table></figure>
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(decodeURI(page.permalink))) #[=decodeURI(page.permalink)]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<h4 id="animate-css"><a href="#animate-css" class="headerlink" title="animate.css"></a>animate.css</h4><p>css 动画库</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// main.js import animate from 'animate.css' Vue.use(animate)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">transition</span></span></span><br><span class="line"><span class="tag">  <span class="attr">enter-active-class</span>=<span class="string">"animated zoomInLeft"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">leave-active-class</span>=<span class="string">"animated zoomOutRight"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="vue-pano"><a href="#vue-pano" class="headerlink" title="vue-pano"></a>vue-pano</h4><p>全景图插件</p>
+<h4 id="better-scroll"><a href="#better-scroll" class="headerlink" title="better-scroll"></a>better-scroll</h4><p>滚动插件</p>
+<h4 id="vue-amap"><a href="#vue-amap" class="headerlink" title="vue-amap"></a>vue-amap</h4><p>高德地图</p>
+<h4 id="vue-ba"><a href="#vue-ba" class="headerlink" title="vue-ba"></a>vue-ba</h4><p>百度统计</p>
+<h4 id="vue-kindedtior"><a href="#vue-kindedtior" class="headerlink" title="vue-kindedtior"></a>vue-kindedtior</h4><p>富文本编辑器</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">liweipeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://liweipeng88.github.io/2019/12/12/nodejs常用包/">https://liweipeng88.github.io/2019/12/12/nodejs常用包/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/nodejs/">nodejs</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/01/19/Vue-%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85axios%E5%B9%B6%E4%B8%94%E7%BB%9F%E4%B8%80%E7%AE%A1%E7%90%86api/"><i class="fa fa-chevron-left">  </i><span>Vue-如何封装axios并且统一管理api</span></a></div><div class="next-post pull-right"><a href="/2019/11/22/setInterval%E4%B8%8EsetTimeout%E7%9A%84%E5%8C%BA%E5%88%AB/"><span>setInterval与setTimeout的区别</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By liweipeng</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

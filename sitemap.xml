@@ -207,7 +207,7 @@
 
   
   <url>
-    <loc>https://liweipeng88.github.io/tags/UI%E5%BA%93/</loc>
+    <loc>https://liweipeng88.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -221,7 +221,7 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://liweipeng88.github.io/tags/UI%E5%BA%93/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -249,14 +249,14 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://liweipeng88.github.io/tags/nodejs/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/tags/nodejs/</loc>
+    <loc>https://liweipeng88.github.io/tags/%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -293,6 +293,13 @@
 
   
   <url>
+    <loc>https://liweipeng88.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2020-12-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
@@ -300,7 +307,7 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <loc>https://liweipeng88.github.io/categories/%E5%90%8E%E7%AB%AF/MongoDB/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -328,13 +335,6 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/%E5%90%8E%E7%AB%AF/MongoDB/</loc>
-    <lastmod>2020-12-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://liweipeng88.github.io/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
@@ -342,14 +342,14 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/</loc>
+    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/nodejs/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/nodejs/</loc>
+    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/%E6%8F%92%E4%BB%B6/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -377,14 +377,14 @@
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/</loc>
+    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/UI%E5%BA%93/</loc>
+    <loc>https://liweipeng88.github.io/categories/web%E5%89%8D%E7%AB%AF/%E7%A7%BB%E5%8A%A8%E7%AB%AF/</loc>
     <lastmod>2020-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
